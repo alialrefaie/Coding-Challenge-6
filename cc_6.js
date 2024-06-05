@@ -7,4 +7,11 @@ class Ball {
         this.radius = radius;
         this.color = color;
     }
+
+    draw(context) {
+        context.Path();
+        context(this.x, this.y, this.color, 0,);
+        context.fillStyle = this.color;
+        context.closePath();
+    }
 }
