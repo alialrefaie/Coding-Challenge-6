@@ -27,3 +27,18 @@ class Ball {
         this.y += this.dy;
     }
 }
+
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const ball = new Ball(200, 160, 2, 2, 20, 'red');
+
+function animate() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    ball.draw(context);
+    ball.update(canvas);
+}
+
+const intervalId = setInterval(animate, 16);
