@@ -17,16 +17,13 @@ class Ball {
     }
 
     update(canvas) {
-        if (this.x + this.radius >= canvas.width || this.x - this.radius <= 0) {
+        // Update ball's position and wall colision
+        if ((this.x + this.radius > canvas.width && this.dx > 0) || (this.x - this.radius < 0 && this.dx < 0)) {
             this.dx = -this.dx;
-            this.x = this.dx > 0 ? canvas.width - this.radius : this.radius;
         }
-
-        if (this.y + this.radius >= canvas.height || this.y - this.radius <= 0) {
+        if ((this.y + this.radius > canvas.height && this.dy > 0) || (this.y - this.radius < 0 && this.dy < 0)) {
             this.dy = -this.dy;
-            this.y = this.dy > 0 ? canvas.height - this.radius : this.radius;
         }
-        
         this.x += this.dx;
         this.y += this.dy;
     }
@@ -45,4 +42,4 @@ function animate() {
     ball.update(canvas);
 }
 
-const intervalId = setInterval(animate, 16);
+const intervalId = setInterval(animate, 20);
